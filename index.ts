@@ -1,10 +1,3 @@
-import { dlopen, FFIType, ptr } from "bun:ffi";
+import { setCursorPos } from "./user32";
 
-const user32 = dlopen("user32.dll", {
-    SetCursorPos: {
-        args: [FFIType.i32, FFIType.i32],
-        returns: FFIType.void,
-    }
-});
-
-user32.symbols.SetCursorPos(0, 0);
+setCursorPos(0, 0);
