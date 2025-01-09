@@ -10,5 +10,8 @@
   },
   "scripts": {
     "start": "bun run index.ts"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.20"
   }
 }
