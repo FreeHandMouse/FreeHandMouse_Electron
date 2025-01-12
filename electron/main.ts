@@ -69,15 +69,11 @@ app.on('activate', () => {
 
 app.whenReady().then(createWindow)
 
-import { binaryFingers } from './binary-fingers.ts'
+import binaryFingers from './binary-fingers.ts'
+import mouse from './mouse.ts'
 
-/**
- * @param handLandmarkerResult HandLandmarkerResult object to be handled.
- * @return true if the process should be stopped.
-*/
-type HandLandmarkerResultHandler = (handLandmarkerResult: HandLandmarkerResult) => boolean;
-
-const handLandmarkerResultHandlers: HandLandmarkerResultHandler[] = [
+const handLandmarkerResultHandlers = [
+  mouse,
   binaryFingers,
 ]
 
