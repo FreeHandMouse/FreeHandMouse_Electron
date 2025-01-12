@@ -1,29 +1,30 @@
 # typescript
 
-TypeScript上からWin32 APIを呼び出すサンプル
+Chromium上でmediapipeをしばいてNode.js上で処理する
 
 ## 環境構築
 
-Bunをインストール
+### Node.jsをインストール
 
 ```
-winget install Oven-sh.Bun
+winget install CoreyButler.NVMforWindows
 ```
 
-シェル再起動、Bunを更新(winget上のバージョンが古い)
+シェル再起動
 
 ```
-bun upgrade
+nvm install lts
+nvm use lts
 ```
 
-リポジトリをクローンしてディレクトリ移動
+### リポジトリをクローン
 
 ```
-bun install
+git clone https://github.com/FreeHandMouse/TypeScript.git
+cd TypeScript
+npm install
 ```
 
-実行
+## 実行
 
-```
-bun run start
-```
+`npm run dev`かVSCodeなら左下のNPMスクリプトから`dev`の再生ボタン

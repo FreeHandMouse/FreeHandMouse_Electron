@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div id="liveview">
+      <video id="video" autoplay muted playsinline></video>
+      <canvas id="canvas"></canvas>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+
+  <style>
+    #liveview {
+      position: relative;
+      > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #video {
+        max-width: 100%;
+        z-index: 0;
+      }
+      #canvas {
+        z-index: 1;
+      }
+    }
+  </style>
+
+</html>
