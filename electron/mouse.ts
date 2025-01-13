@@ -3,8 +3,8 @@ const require = createRequire(import.meta.url)
 
 import { HandLandmarkerResult, Landmark } from "@mediapipe/tasks-vision";
 import { i, landmarkDistance } from "./landmark-util";
-// import robot from "@jitsi/robotjs";
-const robot = require("@jitsi/robotjs");
+import type * as RobotJS from "@jitsi/robotjs";
+const robot: typeof RobotJS = require("@jitsi/robotjs");
 
 const touchThreshold = 0.03;
 const pixelPerCentimeter = 1000;
