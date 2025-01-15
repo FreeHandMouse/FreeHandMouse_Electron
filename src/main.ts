@@ -26,6 +26,7 @@ const canvasContext = canvas.getContext("2d")!;
 
 let lastVideoTime = -1;
 let handLandmarkerResult: HandLandmarkerResult;
+let detectedAtLastFrame = false;
 startVideo();
 
 
@@ -50,13 +51,17 @@ async function predictWebcam() {
   if (lastVideoTime !== video.currentTime) {
     lastVideoTime = video.currentTime;
     handLandmarkerResult = handLandmarker.detectForVideo(video, startTimeMs, {
-      
+
     });
   }
-  if (handLandmarkerResult.landmarks.length > 0) {
+
+  if (detectedAtLastFrame || handLandmarkerResult.landmarks.length > 0) {
     window.ipcRenderer.send("landmarks", handLandmarkerResult);
+    console.log(JSON.stringify(handLandmarkerResult, null, 2));
     drawHandLandmarks(handLandmarkerResult);
   }
+  detectedAtLastFrame = handLandmarkerResult.landmarks.length > 0;
+
   window.requestAnimationFrame(predictWebcam);
 }
 

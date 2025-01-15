@@ -78,9 +78,8 @@ const handLandmarkerResultHandlers = [
 ]
 
 function handLandmarkerResultHandler(_: Electron.IpcMainEvent, handLandmarkerResult: HandLandmarkerResult) {
+  let result = handLandmarkerResult;
   for (const handler of handLandmarkerResultHandlers) {
-    if (handler(handLandmarkerResult)) {
-      return;
-    }
+    result = handler(result);
   }
 }

@@ -1,4 +1,4 @@
-import { Landmark } from "@mediapipe/tasks-vision";
+import { HandLandmarkerResult, Landmark } from "@mediapipe/tasks-vision";
 
 export const i = {
     ROOT: 0,
@@ -8,6 +8,13 @@ export const i = {
     F4_J3: 13, F4_J2: 14, F4_J1: 15, F4: 16,
     F5_J3: 17, F5_J2: 18, F5_J1: 19, F5: 20,
 };
+
+export const landmarkEmptyResult: HandLandmarkerResult = {
+  landmarks: [],
+  worldLandmarks: [],
+  handedness: [],
+  handednesses: [],
+}
 
 export function landmarkIsFold(landmarks: Landmark[]) {
   const points = [
