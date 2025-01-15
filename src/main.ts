@@ -62,7 +62,7 @@ async function predictWebcam() {
   }
   detectedAtLastFrame = handLandmarkerResult.landmarks.length > 0;
 
-  setTimeout(predictWebcam, 0);
+  window.requestAnimationFrame(predictWebcam);
 }
 
 function drawHandLandmarks(handLandmarkerResult: HandLandmarkerResult) {
