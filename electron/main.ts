@@ -31,6 +31,7 @@ function createWindow() {
   win = new BrowserWindow({
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
+      backgroundThrottling: false,
     },
   })
 
