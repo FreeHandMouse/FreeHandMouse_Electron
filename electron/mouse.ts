@@ -7,7 +7,7 @@ import type * as RobotJS from "@jitsi/robotjs";
 const robot: typeof RobotJS = require("@jitsi/robotjs");
 
 const touchThreshold = 0.03;
-const pixelPerCentimeter = 1000;
+const pixelPerCentimeter = 30;
 
 let pointing = false;
 let clickingLeft = false;
@@ -19,23 +19,26 @@ export default function (handLandmarkerResult: HandLandmarkerResult) {
         release();
         return handLandmarkerResult;
     }
-    
+
     const worldLandmarks = handLandmarkerResult.worldLandmarks[0];
     if (!(isTouching(worldLandmarks, i.F1, i.F3) && isTouching(worldLandmarks, i.F1, i.F4))) {
         release();
         return handLandmarkerResult;
     }
 
+    // ワールド座標は不安定？
+    // const landmarkForMouse = handLandmarkerResult.worldLandmarks[0];
+    const landmarkForMouse = handLandmarkerResult.landmarks[0];
     console.log(worldLandmarks[i.ROOT].x, worldLandmarks[i.ROOT].y);
     if (!pointing) {
         pointing = true;
     } else {
-        const dx = worldLandmarks[i.ROOT].x - lastPosition.x;
-        const dy = worldLandmarks[i.ROOT].y - lastPosition.y;
+        const dx = landmarkForMouse[i.ROOT].x - lastPosition.x;
+        const dy = landmarkForMouse[i.ROOT].y - lastPosition.y;
         const pos = robot.getMousePos();
-        robot.moveMouse(pos.x + dx * pixelPerCentimeter * 100, pos.y + dy * pixelPerCentimeter * 100);
+        robot.moveMouse(pos.x - dx * pixelPerCentimeter * 100, pos.y + dy * pixelPerCentimeter * 100);
     }
-    lastPosition = { x: worldLandmarks[i.ROOT].x, y: worldLandmarks[i.ROOT].y };
+    lastPosition = { x: landmarkForMouse[i.ROOT].x, y: landmarkForMouse[i.ROOT].y };
 
     if (isTouching(worldLandmarks, i.F2, i.F3)) {
         if (!clickingLeft) {
