@@ -71,8 +71,10 @@ app.whenReady().then(createWindow)
 
 import binaryFingers from './binary-fingers.ts'
 import mouse from './mouse.ts'
+import movingAverageFilter from './moving-average-filter.ts'
 
 const handLandmarkerResultHandlers = [
+  movingAverageFilter,
   mouse,
   binaryFingers,
 ]
