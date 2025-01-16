@@ -22,14 +22,16 @@ export default function (handLandmarkerResult: HandLandmarkerResult) {
 
     const worldLandmarks = handLandmarkerResult.worldLandmarks[0];
     if (!(isTouching(worldLandmarks, i.F1, i.F3) && isTouching(worldLandmarks, i.F1, i.F4))) {
-        release();
+        if (pointing) {
+            release();
+        }
         return handLandmarkerResult;
     }
 
     // ワールド座標は不安定？
     // const landmarkForMouse = handLandmarkerResult.worldLandmarks[0];
     const landmarkForMouse = handLandmarkerResult.landmarks[0];
-    console.log(worldLandmarks[i.ROOT].x, worldLandmarks[i.ROOT].y);
+    // console.log(worldLandmarks[i.ROOT].x, worldLandmarks[i.ROOT].y);
     if (!pointing) {
         pointing = true;
     } else {
@@ -44,11 +46,13 @@ export default function (handLandmarkerResult: HandLandmarkerResult) {
         if (!clickingLeft) {
             clickingLeft = true;
             robot.mouseToggle("down", "left");
+            console.log("left down");
         }
     } else {
         if (clickingLeft) {
             clickingLeft = false;
             robot.mouseToggle("up", "left");
+            console.log("left up");
         }
     }
 
@@ -56,12 +60,13 @@ export default function (handLandmarkerResult: HandLandmarkerResult) {
         if (!clickingRight) {
             clickingRight = true;
             robot.mouseToggle("down", "right");
+            console.log("right down");
         } else {
             clickingRight = false;
             robot.mouseToggle("up", "right");
+            console.log("right up");
         }
     }
-    console.log(pointing, clickingLeft, clickingRight);
     return landmarkEmptyResult;
 }
 
@@ -70,6 +75,7 @@ function isTouching(worldLandmarks: Landmark[], a: number, b: number) {
 }
 
 function release() {
+    console.log("release");
     if (pointing) {
         pointing = false;
     }

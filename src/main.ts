@@ -1,10 +1,5 @@
 import { HandLandmarker, FilesetResolver, HandLandmarkerResult } from "@mediapipe/tasks-vision"
 
-// Use contextBridge
-window.ipcRenderer.on('main-process-message', (_event, message) => {
-  console.log(message)
-})
-
 const vision = await FilesetResolver.forVisionTasks(
   // TODO: ローカルにする
   "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.20/wasm"

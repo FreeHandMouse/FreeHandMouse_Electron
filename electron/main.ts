@@ -35,11 +35,6 @@ function createWindow() {
     },
   })
 
-  // Test active push message to Renderer-process.
-  win.webContents.on('did-finish-load', () => {
-    win?.webContents.send('main-process-message', (new Date).toLocaleString())
-  })
-
   ipcMain.on("landmarks", handLandmarkerResultHandler)
 
   if (VITE_DEV_SERVER_URL) {
@@ -70,14 +65,14 @@ app.on('activate', () => {
 
 app.whenReady().then(createWindow)
 
-import binaryFingers from './binary-fingers.ts'
-import mouse from './mouse.ts'
 import movingAverageFilter from './moving-average-filter.ts'
+import mouse from './mouse.ts'
+// import binaryFingers from './binary-fingers.ts'
 
 const handLandmarkerResultHandlers = [
   movingAverageFilter,
   mouse,
-  binaryFingers,
+  // binaryFingers,
 ]
 
 function handLandmarkerResultHandler(_: Electron.IpcMainEvent, handLandmarkerResult: HandLandmarkerResult) {
