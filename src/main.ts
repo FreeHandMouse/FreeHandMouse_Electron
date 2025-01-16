@@ -57,7 +57,6 @@ async function predictWebcam() {
 
   if (detectedAtLastFrame || handLandmarkerResult.landmarks.length > 0) {
     window.ipcRenderer.send("landmarks", handLandmarkerResult);
-    console.log(JSON.stringify(handLandmarkerResult, null, 2));
     drawHandLandmarks(handLandmarkerResult);
   }
   detectedAtLastFrame = handLandmarkerResult.landmarks.length > 0;
