@@ -34,7 +34,7 @@ async function startVideo() {
   const stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
-      facingMode: "environment",
+      facingMode: "user",
       width: 9999,
       height: 9999,
     },
