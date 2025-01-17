@@ -61,7 +61,9 @@ export default function (handLandmarkerResult: HandLandmarkerResult) {
             clickingRight = true;
             robot.mouseToggle("down", "right");
             console.log("right down");
-        } else {
+        }
+    } else {
+        if (clickingRight) {
             clickingRight = false;
             robot.mouseToggle("up", "right");
             console.log("right up");
