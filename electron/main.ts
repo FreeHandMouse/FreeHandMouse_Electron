@@ -66,13 +66,13 @@ app.on('activate', () => {
 app.whenReady().then(createWindow)
 
 // import movingAverageFilter from './moving-average-filter.ts'
-import backrushFilter from './backrush-filter.ts'
+import hysteresisFilter from './hysteresis-filter.ts'
 import mouse from './mouse.ts'
 // import binaryFingers from './binary-fingers.ts'
 
 const handLandmarkerResultHandlers = [
   // movingAverageFilter,
-  backrushFilter,
+  hysteresisFilter,
   mouse,
   // binaryFingers,
 ]
