@@ -4,6 +4,18 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { HandLandmarkerResult } from '@mediapipe/tasks-vision'
 
+// import movingAverageFilter from './moving-average-filter.ts'
+import hysteresisFilter from './hysteresis-filter.ts'
+import mouse from './mouse.ts'
+// import binaryFingers from './binary-fingers.ts'
+
+const handLandmarkerResultHandlers = [
+  // movingAverageFilter,
+  hysteresisFilter,
+  mouse,
+  // binaryFingers,
+]
+
 // const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -64,18 +76,6 @@ app.on('activate', () => {
 })
 
 app.whenReady().then(createWindow)
-
-// import movingAverageFilter from './moving-average-filter.ts'
-import hysteresisFilter from './hysteresis-filter.ts'
-import mouse from './mouse.ts'
-// import binaryFingers from './binary-fingers.ts'
-
-const handLandmarkerResultHandlers = [
-  // movingAverageFilter,
-  hysteresisFilter,
-  mouse,
-  // binaryFingers,
-]
 
 function handLandmarkerResultHandler(_: Electron.IpcMainEvent, handLandmarkerResult: HandLandmarkerResult) {
   let result = handLandmarkerResult;
