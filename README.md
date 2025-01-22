@@ -29,6 +29,10 @@ npm install
 
 `npm run dev`かVSCodeなら左下のNPMスクリプトから`dev`の再生ボタン
 
+## ビルド
+
+`npm run build`かVSCodeなら左下のNPMスクリプトから`build`の再生ボタン
+
 ## 公式ドキュメント
 
 [MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker?hl=ja)
