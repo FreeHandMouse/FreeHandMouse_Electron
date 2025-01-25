@@ -7,12 +7,14 @@ import { HandLandmarkerResult } from '@mediapipe/tasks-vision'
 // import movingAverageFilter from './moving-average-filter.ts'
 import hysteresisFilter from './hysteresis-filter.ts'
 import mouse from './mouse.ts'
+import macWindowKill from './mac-window-kill.ts'
 // import binaryFingers from './binary-fingers.ts'
 
 const handLandmarkerResultHandlers = [
   // movingAverageFilter,
   hysteresisFilter,
   mouse,
+  macWindowKill,
   // binaryFingers,
 ]
 
