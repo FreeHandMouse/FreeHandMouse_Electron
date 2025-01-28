@@ -1,5 +1,5 @@
 {
-  "name": "typescript",
+  "name": "free-hand-mouse",
   "version": "0.0.0",
   "main": "dist-electron/main.js",
   "type": "module",

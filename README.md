@@ -1,10 +1,31 @@
-# typescript
+# FreeHandMouse
 
-Chromium上でmediapipeをしばいてNode.js上で処理する
+Webカメラを用いて手の動きを検出し、カーソルを操作する
 
-## 環境構築
+## 試す
 
-### Node.jsをインストール
+このアプリは開発段階であり、意に反する操作が行われる可能性があるので、安全な状態でお試しください。このアプリを使用することによって生じた一切の損害について責任を負いません。
+
+### 実行する
+
+- Windows: [releases](https://github.com/FreeHandMouse/FreeHandMouse_Electron/releases)からダウンロード、展開して`FreeHandMouse.exe`を実行
+- macOS: ビルドできてないので開発者向けの手順を参照してください
+
+一部のライブラリをダウンロードするため、実行時にインターネット接続が必要です。
+
+### 使い方
+
+手をカメラに写し、親指、中指、薬指の先端を接触させた状態で手を移動させるとカーソルが移動します。人差し指の先端を中指の先端に接触させるとクリックします。小指の先端を中指の先端に接触させると右クリックします。
+
+### 既知の不具合
+
+Windowsで、このアプリを使ってこのアプリのウィンドウをクリックしようとすると操作が反映されなくなります。別の手段でクリックすると復帰しますが、この際反映されていなかった操作が一気に実行されるのでご注意ください。
+
+## 開発者向け
+
+### 環境構築
+
+Node.jsをインストール
 
 ```
 winget install CoreyButler.NVMforWindows
@@ -25,19 +46,19 @@ cd TypeScript
 npm install
 ```
 
-## 実行
+### 実行
 
 `npm run dev`かVSCodeなら左下のNPMスクリプトから`dev`の再生ボタン
 
-## ビルド
+### ビルド
 
 `npm run build`かVSCodeなら左下のNPMスクリプトから`build`の再生ボタン
 
-## 公式ドキュメント
+### 公式ドキュメント
 
 [MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker?hl=ja)
 
-## ランドマークのインデックス
+### ランドマークのインデックス
 
 [landmark-util.ts](src/landmark-util.ts)から`i`をimportして使う
 
@@ -51,7 +72,7 @@ npm install
 
 手首 `i.ROOT`
 
-## データ型
+### データ型
 
 `HandLandmarkerResult`
 
@@ -124,6 +145,6 @@ npm install
 }
 ```
 
-## 処理の流れ
+### 処理の流れ
 
 [electron/main.ts](electron/main.ts)の`handLandmarkerResultHandlers`に`HandLandmarkerResult`を受け取り`HandLandmarkerResult`を返す関数を登録すると、1つめの関数に生のデータが渡され、2つめ以降の関数に前の関数の返り値が渡される。
