@@ -27,6 +27,8 @@ Windowsで、このアプリを使ってこのアプリのウィンドウをク�
 
 Node.jsをインストール
 
+#### Windows
+
 ```
 winget install CoreyButler.NVMforWindows
 ```
@@ -38,11 +40,15 @@ nvm install lts
 nvm use lts
 ```
 
+#### macOS
+
+[公式サイト](https://nodejs.org/ja/download)からダウンロードしてインストールするか、任意のパッケージマネージャを使ってインストール
+
 ### リポジトリをクローン
 
 ```
-git clone https://github.com/FreeHandMouse/TypeScript.git
-cd TypeScript
+git clone https://github.com/FreeHandMouse/FreeHandMouse_Electron.git
+cd FreeHandMouse_Electron
 npm install
 ```
 
