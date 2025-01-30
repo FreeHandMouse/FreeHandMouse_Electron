@@ -22,6 +22,7 @@ const canvasContext = canvas.getContext("2d")!;
 let lastVideoTime = -1;
 let handLandmarkerResult: HandLandmarkerResult;
 let detectedAtLastFrame = false;
+let imageReverse = false;
 startVideo();
 
 
@@ -35,6 +36,7 @@ async function startVideo() {
     },
   });
   video.srcObject = stream;
+  if (imageReverse) video.style.transform = "scaleX(-1)";
   video.addEventListener("loadeddata", predictWebcam);
 }
 
@@ -67,7 +69,7 @@ function drawHandLandmarks(handLandmarkerResult: HandLandmarkerResult) {
       for (const landmark of landmarks) {
         canvasContext.beginPath();
         canvasContext.arc(
-          landmark.x * canvas.width,
+          imageReverse ? (1 - landmark.x) * canvas.width : landmark.x * canvas.width,
           landmark.y * canvas.height,
           5,
           0,
